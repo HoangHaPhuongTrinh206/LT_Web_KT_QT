@@ -48,7 +48,10 @@ public class CartController_24162131 extends HttpServlet {
         String id = req.getParameter("id");
         if (id != null) {
             Video_24162131 v = videoService.findById(id);
-            if (v != null && v.getActive() && v.getQuantity() != null && v.getQuantity() > 0) {
+            // Chỉ cần active là thêm được; quantity null/0 = coi như không giới hạn
+            int maxQty = (v != null && v.getQuantity() != null && v.getQuantity() > 0)
+                    ? v.getQuantity() : Integer.MAX_VALUE;
+            if (v != null && Boolean.TRUE.equals(v.getActive())) {
                 HttpSession session = req.getSession();
                 Map<String, CartItem_24162131> cart = (Map<String, CartItem_24162131>) session.getAttribute("cart");
                 if (cart == null) {
@@ -57,7 +60,7 @@ public class CartController_24162131 extends HttpServlet {
                 
                 CartItem_24162131 item = cart.get(id);
                 if (item != null) {
-                    if (item.getQuantity() < v.getQuantity()) {
+                    if (item.getQuantity() < maxQty) {
                         item.setQuantity(item.getQuantity() + 1);
                     }
                 } else {
@@ -67,7 +70,7 @@ public class CartController_24162131 extends HttpServlet {
                     item.setPoster(v.getPoster());
                     item.setPrice(v.getPrice() != null ? v.getPrice() : 0);
                     item.setQuantity(1);
-                    item.setMaxQuantity(v.getQuantity());
+                    item.setMaxQuantity(maxQty);
                     cart.put(id, item);
                 }
                 session.setAttribute("cart", cart);

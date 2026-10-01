@@ -1,14 +1,10 @@
 package vn.hcmut.de03.filter;
 
-import org.sitemesh.builder.SiteMeshFilterBuilder;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;
 
+/**
+ * SiteMesh 3 tự động đọc cấu hình từ /WEB-INF/sitemesh3.xml.
+ * Không cần override applyCustomConfiguration nữa.
+ */
 public class MySiteMeshFilter_24162131 extends ConfigurableSiteMeshFilter {
-    @Override
-    protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
-        builder.addDecoratorPath("/admin/*", "/WEB-INF/decorators/admin.jsp")
-               .addDecoratorPath("/*", "/WEB-INF/decorators/user.jsp")
-               .addExcludedPath("/WEB-INF/*") // Tránh lỗi lặp decorator
-               .addExcludedPath("/assets/*");
-    }
 }

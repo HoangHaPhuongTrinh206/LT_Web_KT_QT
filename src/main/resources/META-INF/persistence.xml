@@ -21,7 +21,7 @@
       <property name="jakarta.persistence.jdbc.user" value="sa"/>
       <property name="jakarta.persistence.jdbc.password" value="PTrinh@20061999"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
-      <property name="hibernate.hbm2ddl.auto" value="none"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.show_sql" value="true"/>
     </properties>
   </persistence-unit>

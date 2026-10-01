@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+  <!-- Exclude các path nội bộ khỏi decorator -->
+  <exclude-path>/WEB-INF/*</exclude-path>
+  <exclude-path>/assets/*</exclude-path>
+  <exclude-path>/uploads/*</exclude-path>
+
+  <!-- Decorator cho Admin -->
+  <mapping>
+    <path>/admin/*</path>
+    <decorator>admin.jsp</decorator>
+  </mapping>
+
+  <!-- Decorator mặc định cho User -->
+  <mapping>
+    <path>/*</path>
+    <decorator>user.jsp</decorator>
+    </mapping>
+</sitemesh>
