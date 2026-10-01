@@ -1,0 +1,23 @@
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="${ctx}/home">&#127909; VideoShare</a>
+    <nav class="menu">
+      <a href="${ctx}/home">Trang Chủ</a>
+      <a href="${ctx}/products">Sản phẩm</a>
+      <c:if test="${sessionScope.currentUser.admin}">
+        <a href="${ctx}/admin/home">Trang quản trị</a>
+      </c:if>
+      <c:choose>
+        <c:when test="${empty sessionScope.currentUser}">
+          <a href="${ctx}/login">Đăng nhập</a>
+        </c:when>
+        <c:otherwise>
+          <span class="hello">Xin chào, <c:out value="${sessionScope.currentUser.fullname}"/></span>
+          <a href="${ctx}/cart">Giỏ hàng</a>
+          <a href="${ctx}/order-history">Lịch sử đơn hàng</a>
+          <a href="${ctx}/logout">Đăng xuất</a>
+        </c:otherwise>
+      </c:choose>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,19 @@
+<%-- Đầu vào: pg (PageResult), baseUrl (kết thúc bằng ? hoặc &), pageParam (tên tham số trang) --%>
+<c:if test="${pg.totalPages > 1}">
+  <nav class="pager">
+    <c:choose>
+      <c:when test="${pg.page > 1}"><a href="${baseUrl}${pageParam}=${pg.page - 1}">&laquo;</a></c:when>
+      <c:otherwise><span class="disabled">&laquo;</span></c:otherwise>
+    </c:choose>
+    <c:forEach var="i" begin="${pg.startPage}" end="${pg.endPage}">
+      <c:choose>
+        <c:when test="${i == pg.page}"><span class="active">${i}</span></c:when>
+        <c:otherwise><a href="${baseUrl}${pageParam}=${i}">${i}</a></c:otherwise>
+      </c:choose>
+    </c:forEach>
+    <c:choose>
+      <c:when test="${pg.page < pg.totalPages}"><a href="${baseUrl}${pageParam}=${pg.page + 1}">&raquo;</a></c:when>
+      <c:otherwise><span class="disabled">&raquo;</span></c:otherwise>
+    </c:choose>
+  </nav>
+</c:if>

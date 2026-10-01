@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#e5e7eb"/>
+  <polygon points="125,70 125,130 180,100" fill="#9ca3af"/>
+  <text x="150" y="170" font-family="Arial" font-size="14" text-anchor="middle" fill="#6b7280">No poster</text>
+</svg>

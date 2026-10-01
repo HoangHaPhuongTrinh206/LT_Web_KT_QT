@@ -1,0 +1,22 @@
+<%-- Thẻ 1 video. Đầu vào: biến v (Video) --%>
+<%@ include file="/WEB-INF/views/common/poster.jspf" %>
+<article class="card">
+  <a href="${ctx}/video?id=${v.videoId}">
+    <img class="poster" src="${img}" alt="poster"
+         onerror="this.onerror=null;this.src='${ctx}/assets/img/no-image.svg'">
+  </a>
+  <div class="card-body">
+    <p><b>Tiêu đề:</b> <a href="${ctx}/video?id=${v.videoId}"><c:out value="${v.title}"/></a></p>
+    <p><b>Mã video:</b> <c:out value="${v.videoId}"/></p>
+    <p><b>Category name:</b> <c:out value="${v.category.categoryname}"/></p>
+    <p><b>View:</b> ${v.views}</p>
+    <p class="counts"><span>Share(${v.shareCount})</span><span>Like(${v.likeCount})</span></p>
+    <p>
+      <b>Giá:</b> <c:out value="${v.price != null ? v.price : 0}"/> | 
+      <b>SL:</b> <c:out value="${v.quantity != null ? v.quantity : 0}"/>
+    </p>
+    <p>
+      <a class="btn btn-sm btn-primary" href="${ctx}/cart/add?id=${v.videoId}">Thêm vào giỏ</a>
+    </p>
+  </div>
+</article>

@@ -1,0 +1,6 @@
+<%-- Đầu vào: biến v (Video). Đầu ra: biến img = URL ảnh poster --%>
+<c:choose>
+  <c:when test="${empty v.poster}"><c:set var="img" value="${ctx}/assets/img/no-image.svg"/></c:when>
+  <c:when test="${fn:startsWith(v.poster, 'http')}"><c:set var="img" value="${v.poster}"/></c:when>
+  <c:otherwise><c:set var="img" value="${ctx}/uploads/${v.poster}"/></c:otherwise>
+</c:choose>
